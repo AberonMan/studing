@@ -1,4 +1,4 @@
-package studing.algoritms.sort.recursive;
+package studing.algoritms.recursive;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class BinarySearch {
         int arrayLength = scanner.nextInt();
         int[] array = new int[arrayLength];
         int i = 0;
-        while (arrayLeng th != i) {
+        while (arrayLength != i) {
             array[i++] = scanner.nextInt();
         }
         int searchNumberCount = scanner.nextInt();

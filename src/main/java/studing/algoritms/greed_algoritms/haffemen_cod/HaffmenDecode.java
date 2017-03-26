@@ -1,4 +1,4 @@
-package studing.algoritms.sort.greed_algoritms.haffemen_cod;
+package studing.algoritms.greed_algoritms.haffemen_cod;
 
 import java.util.HashMap;
 import java.util.Map;

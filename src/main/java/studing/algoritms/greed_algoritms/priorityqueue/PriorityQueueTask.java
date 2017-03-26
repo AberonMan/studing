@@ -1,4 +1,4 @@
-package studing.algoritms.sort.greed_algoritms.priorityqueue;
+package studing.algoritms.greed_algoritms.priorityqueue;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,7 +1,4 @@
-package studing.algoritms.sort.recursive;
+package studing.algoritms.recursive;
 
-/**
- * Created by 1 on 20.03.2017.
- */
 public class InversionCount {
 }
