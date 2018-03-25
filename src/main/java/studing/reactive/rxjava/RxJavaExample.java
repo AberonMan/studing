@@ -4,11 +4,7 @@ import rx.Observable;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * https://www.infoq.com/articles/rxjava-by-example
@@ -115,6 +111,7 @@ public class RxJavaExample {
     }
 
     public static class OtherFunctionExample{
+
         public static void main(String[] args) {
             //merge
             Observable.from(WORDS)
@@ -126,33 +123,13 @@ public class RxJavaExample {
                     .mergeWith(Observable.from(WORDS))
                     .subscribe(System.out::println);
             System.out.println();
-
-            Observable.from(new Future<Object>() {
-                @Override
-                public boolean cancel(boolean mayInterruptIfRunning) {
-                    return false;
-                }
-
-                @Override
-                public boolean isCancelled() {
-                    return false;
-                }
-
-                @Override
-                public boolean isDone() {
-                    return false;
-                }
-
-                @Override
-                public Object get() throws InterruptedException, ExecutionException {
-                    return null;
-                }
-
-                @Override
-                public Object get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
-                    return null;
-                }
-            }, 1, TimeUnit.SECONDS).debounce()
+           //debounce
+            Observable.just(0, 400, 800)
+                    .flatMap(v -> Observable.timer(v, TimeUnit.MILLISECONDS).map(w -> v))
+                    .doOnNext(v -> System.out.println("T=" + v))
+                    .debounce(300, TimeUnit.MILLISECONDS)
+                    .toBlocking()
+                    .subscribe(v -> System.out.println("Debounced: " + v));
         }
     }
 
